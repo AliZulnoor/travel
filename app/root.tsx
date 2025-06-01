@@ -11,6 +11,7 @@ import * as Sentry from "@sentry/react-router";
 import type { Route } from "./+types/root";
 import "./app.css";
 
+
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -30,22 +31,23 @@ registerLicense(import.meta.env.VITE_SYNCFUSION_LICENSE_KEY);
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+      <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
-        <Links /><title></title>
+        <Links />
+        <link rel="icon" href="/public/assets/images/Rehla.png" type="image/x-icon" />
+        <title>Rehla</title>
       </head>
       <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+      {children}
+      <ScrollRestoration />
+      <Scripts />
       </body>
-    </html>
+      </html>
   );
 }
-
 export default function App() {
   return <Outlet />;
 }

@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { Outlet, redirect } from "react-router";
 import { getCurrentUser } from "~/appwrite/auth";
-import NavItems from "../../../components/NavItems"; // ✅ Correct import
+import NavItems from "../../../components/NavItems";
+import MobileSidebar from "../../../components/MobileSidebar";
 
 export async function clientLoader() {
     try {
@@ -34,10 +35,18 @@ const AdminLayout = () => {
     }, []);
 
     return (
-        <div className="flex min-h-screen">
-            <NavItems /> {/* Sidebar */}
+        <div className="min-h-screen flex flex-col lg:flex-row">
+            {/* ✅ Sidebar: show mobile or desktop based on screen size */}
+            <div className="block lg:hidden">
+                <MobileSidebar />
+            </div>
+            <div className="hidden lg:block">
+                <NavItems />
+            </div>
+
+            {/* ✅ Main content always rendered */}
             <div className="flex-1">
-                <main className="p-6 pt-8 overflow-y-auto"> {/* Padding & spacing */}
+                <main className="p-6 pt-8 overflow-y-auto">
                     <Outlet />
                 </main>
             </div>
