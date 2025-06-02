@@ -1,21 +1,23 @@
-// server.ts
-import { Client, Databases, Account, Storage } from "appwrite";
+import { Client, Account, Databases, Storage } from "appwrite";
 
+// Read environment variables
 const endpoint = process.env.APPWRITE_ENDPOINT;
 const projectId = process.env.APPWRITE_PROJECT_ID;
-const apiKey = process.env.APPWRITE_API_KEY;
 
-if (!endpoint || !projectId || !apiKey) {
-    throw new Error("❌ Missing Appwrite env vars (check APPWRITE_ENDPOINT, PROJECT_ID, API_KEY)");
+if (!endpoint || !endpoint.startsWith("http")) {
+    throw new Error("❌ Missing or invalid APPWRITE_ENDPOINT");
 }
 
+if (!projectId) {
+    throw new Error("❌ Missing APPWRITE_PROJECT_ID");
+}
+
+// Initialize Appwrite client
 const client = new Client()
     .setEndpoint(endpoint)
-    .setProject(projectId)
-    .setKey(apiKey); // Only on server side
+    .setProject(projectId);
 
-export const database = new Databases(client);
+// Export instances
 export const account = new Account(client);
+export const database = new Databases(client);
 export const storage = new Storage(client);
-
-// You can add server logic here if needed, or export client for routes
