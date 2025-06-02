@@ -1,6 +1,7 @@
-import { createRequestHandler } from "@react-router/serve";
+export default async function handler(req, res) {
+    const { createRequestHandler } = await import("@react-router/serve");
+    const build = await import("/build/server/index.js");
 
-// Import the built routes
-import * as build from "./build/index.js";
-
-export default createRequestHandler({ build });
+    const requestHandler = createRequestHandler({ build });
+    return requestHandler(req, res);
+}
