@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
-    "start": "react-router-serve api.js"
+    "build:ssr": "esbuild ssr-handler.js --bundle --platform=node --outfile=api.cjs --format=cjs",
+    "build": "react-router build && npm run build:ssr"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
@@ -40,6 +40,7 @@
     "@types/node": "^20",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
+    "esbuild": "^0.25.5",
     "react-router-devtools": "^1.1.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.2",
