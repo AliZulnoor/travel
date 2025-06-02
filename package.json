@@ -3,10 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
     "build": "react-router build",
-    "start": "NODE_OPTIONS='--import ./instrument.server.mjs' react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "start": "react-router-serve api.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
