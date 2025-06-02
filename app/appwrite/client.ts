@@ -1,17 +1,13 @@
 import { Client, Account, Databases, Storage } from "appwrite";
 
 export const appwriteConfig = {
-    endpointUrl: process.env.APPWRITE_ENDPOINT ?? "",
-    projectId: process.env.APPWRITE_PROJECT_ID ?? "",
-    apiKey: process.env.APPWRITE_API_KEY ?? "",
-    databaseId: process.env.APPWRITE_DATABASE_ID ?? "",
-    userCollectionId: process.env.APPWRITE_USERS_COLLECTION_ID ?? "",
-    tripCollectionId: process.env.APPWRITE_TRIPS_COLLECTION_ID ?? ""
+    endpointUrl: import.meta.env.VITE_APPWRITE_API_ENDPOINT,
+    projectId: import.meta.env.VITE_APPWRITE_PROJECT_ID,
+    apiKey: import.meta.env.VITE_APPWRITE_API_KEY,
+    databaseId: import.meta.env.VITE_APPWRITE_DATABASE_ID,
+    userCollectionId: import.meta.env.VITE_APPWRITE_USERS_COLLECTION_ID,
+    tripCollectionId: import.meta.env.VITE_APPWRITE_TRIPS_COLLECTION_ID
 };
-
-if (!appwriteConfig.endpointUrl.startsWith("http")) {
-    throw new Error("❌ Missing or invalid APPWRITE_ENDPOINT");
-}
 
 const client = new Client()
     .setEndpoint(appwriteConfig.endpointUrl)
