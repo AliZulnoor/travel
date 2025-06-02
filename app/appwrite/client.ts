@@ -1,17 +1,17 @@
 import {Account, Client, Databases, Storage, ID} from "appwrite";
 
 export const appwriteConfig = {
-    endpointUrl: import.meta.env.VITE_APPWRITE_API_ENDPOINT,
-    projectId: import.meta.env.VITE_APPWRITE_PROJECT_ID,
-    apiKey: import.meta.env.VITE_APPWRITE_API_KEY,
-    databaseId: import.meta.env.VITE_APPWRITE_DATABASE_ID,
-    userCollectionId: import.meta.env.VITE_APPWRITE_USERS_COLLECTION_ID,
-    tripCollectionId: import.meta.env.VITE_APPWRITE_TRIPS_COLLECTION_ID,
-}
+    endpointUrl: process.env.APPWRITE_ENDPOINT!,
+    projectId: process.env.APPWRITE_PROJECT_ID!,
+    apiKey: process.env.APPWRITE_API_KEY!,
+    databaseId: process.env.APPWRITE_DATABASE_ID!,
+    userCollectionId: process.env.APPWRITE_USERS_COLLECTION_ID!,
+    tripCollectionId: process.env.APPWRITE_TRIPS_COLLECTION_ID!
+};
 
 const client = new Client()
     .setEndpoint(appwriteConfig.endpointUrl)
-    .setProject(appwriteConfig.projectId)
+    .setProject(appwriteConfig.projectId);
 
 
 
