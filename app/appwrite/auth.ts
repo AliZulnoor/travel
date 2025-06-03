@@ -26,11 +26,11 @@ if (typeof window !== 'undefined') {
 // ✅ Login with Google
 export const loginWithGoogle = async () => {
     try {
-        await account.createOAuth2Session(
-            'google' as any,
-            window.location.origin,
-            window.location.origin
-        );
+      await account.createOAuth2Session(
+    'google',
+    `${window.location.origin}/`, // success
+    `${window.location.origin}/auth-error` // failure
+);
     } catch (error) {
         console.error('❌ OAuth Login Failed:', error);
     }
