@@ -37,7 +37,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        <link rel="icon" href="/assets/images/Rehla.png" type="image/x-icon" />
+        <link rel="icon" href="/public/assets/images/Rehla.png" type="image/x-icon" />
         <title>Rehla</title>
       </head>
       <body>
