@@ -12,17 +12,15 @@ COPY --from=deps /app/node_modules ./node_modules
 RUN npm run build
 
 # Step 3: Production container
-FROM node:20-alpine AS runner
+FROM node:20-alpine as runner
 WORKDIR /app
 
-# Copy only what's needed
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/instrument.server.mjs ./instrument.server.mjs
 
-# Expose port (Railway uses this automatically)
 EXPOSE 3000
 
-# Start the app
-CMD ["npm", "run", "start"]
+# 👇 Automatically inherit Railway env variables at runtime
+CMD ["sh", "-c", "node --import ./instrument.server.mjs ./build/server/index.js"]
