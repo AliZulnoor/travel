@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3cb62786-0821-4a6c-9eea-a39c6c56fec5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.env.local" beforeDir="false" afterPath="$PROJECT_DIR$/.env.local" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/desktop.ini" beforeDir="false" />
@@ -106,7 +107,7 @@
       <workItem from="1748662949348" duration="600000" />
       <workItem from="1748790792805" duration="1800000" />
       <workItem from="1748795437358" duration="1236000" />
-      <workItem from="1748907604942" duration="1891000" />
+      <workItem from="1748907604942" duration="4963000" />
     </task>
     <servers />
   </component>
