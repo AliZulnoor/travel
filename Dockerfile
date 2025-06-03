@@ -28,7 +28,7 @@ COPY --from=builder /app/build ./build
 COPY --from=builder /app/instrument.server.mjs ./instrument.server.mjs
 
 # Copy and rename .env.local → .env
-COPY .env.local .env
+
 
 # Basic project files
 COPY package*.json ./
