@@ -9,16 +9,20 @@ const databases = new Databases(client);
 
 // ✅ Configure Appwrite only in browser
 if (typeof window !== 'undefined') {
-    const endpoint = import.meta.env.VITE_APPWRITE_API_ENDPOINT;
-    const project = import.meta.env.VITE_APPWRITE_PROJECT_ID;
+  const endpoint = import.meta.env.VITE_APPWRITE_API_ENDPOINT;
+  const project = import.meta.env.VITE_APPWRITE_PROJECT_ID;
 
-    if (!endpoint || !project) {
-        console.error('❌ Missing Appwrite environment variables!');
-    } else {
-        client.setEndpoint(endpoint).setProject(project);
+  if (!endpoint?.startsWith('http') || !project) {
+    console.error('❌ Missing or invalid Appwrite environment variables!');
+  } else {
+    try {
+      client.setEndpoint(endpoint).setProject(project);
+      console.log('✅ Appwrite client initialized');
+    } catch (err) {
+      console.error('❌ Failed to set Appwrite client config:', err);
     }
+  }
 }
-
 // ✅ Login with Google
 export const loginWithGoogle = async () => {
     try {
